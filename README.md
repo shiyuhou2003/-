@@ -1,7 +1,7 @@
-#这是一个有关爬虫初学者学学习的教程需要一点python基础
+<h1>爬虫基础学习</h1>
+<h5>（需要一点python基础）</h5>
 
-
-```mermaid
+```mermaid   “‘美人鱼
 mindmap
   root((爬虫技术体系))
     1. 网络通讯基础
@@ -21,10 +21,10 @@ mindmap
         通用爬虫
         聚焦爬虫
     3. 爬虫请求库
-      Requests
+      Requests   请求   请求
       Urllib
       Aiohttp
-      Selenium
+      Selenium   硒   硒
     4. 数据提取技术
       正则表达式（re）
       XPath
@@ -41,7 +41,7 @@ mindmap
         元素定位
           ID/XPath/CSS选择器
         动态页面渲染
-      Playwright
+      Playwright   剧作家
     7. 反爬虫处理
       常见手段
         User-Agent验证
@@ -54,12 +54,12 @@ mindmap
         随机请求头
         代理IP轮换
         模拟登录
-          Session/Cookie
+          Session/Cookie   会话/饼干
     8. MongoDB数据库
       特点
         非关系型
       基本操作
-        insert_one/insert_many
+        insert_one/insert_many   插入一条/多条记录
         find
         索引优化
       Python交互

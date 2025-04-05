@@ -1,0 +1,154 @@
+爬虫的概念：模拟浏览器，发送请求，获取响应
+
+网络爬虫（又称为网页爬虫和网络机器人）就是模拟客户端（浏览器）发送网络请求，接受请求响应，按照自己编写的规则，自动地抓取互联网信息的程序
+
+理论上来说：客户端（浏览器）能做到事情，爬虫都可以做
+
+爬虫也只能获取客户端（浏览器所展现出来的数据）
+
+爬虫的分类：
+根据被爬取网站的数量不同可以分为：通用爬虫（搜索引擎）以及聚焦爬虫（12306抢票程序等）
+
+根据以获取的信息为目的：功能性爬虫（页面导航），数据增量爬虫（例如招聘信息）
+
+根据url地址和对应的页面内容是否改变，数据增量爬虫可分为
+基于url地址变化，内容也随之变化的数据增量爬虫
+url地址不变的，内容变化的数据增量爬虫
+
+网址（url）：统一资源定位符，俗称为网络资源地址
+
+url地址的构成：
+url：   https://www.baidu.com/1325/22132.html
+
+协议部分：https://   、   http：//         、      ftp：//                 http：超文本传输协议（txt,mp3,mp4,zip等）
+
+域名：www.baidu.com        IP地址的别名，使用域名的目的就是方便的记住某台主机的IP地址，故也可以写成（127.0.0.1：8000）的形式
+
+扩展部分：https://www.baidu.com/hello.html?page=1&count=10        ?后面是扩展查询参数的部分
+
+
+参数说明？后面的page表示第一个参数，后面的参数部分使用&进行连接
+
+http协议的介绍：
+HTTP协议基于TCP协议进行数据传输
+
+HTTP 协议是一种用于Secure HTTP/S的快速可靠可靠->$网络通信的标准协议，主要用于Web开发。HTTP协议主要是用来建立客户端（例如浏览器）和服务器之间的通信，通过HTTP 请求和响应来实现数据交换。
+
+HTTP 协议分为两部分：客户端和服务器端。客户端向服务器发送HTTP 请求，服务器根据请求返回HTTP 响应。以下是HTTP协议的核心要素：
+
+1. HTTP 协议的标准结构
+HTTP协议的标准结构分为两部分：标准部分和请求和响应的交替部分。具体结构如下：
+
+标准部分（HTTP 1.1）
+<HTML>
+HTTP/1.1 100 OK
+Content-Type: text/html
+Content-Length: 123
+交替部分
+交替部分由以下几部分组成：
+
+请求行
+请求头部
+体（体会）内容
+响应头
+响应行
+2. 常见 HTTP 请求方法
+HTTP 请求有以下几种方法：
+
+GET：用于读取资源（例如访问网页）。
+POST：用于提交 POST 数据（例如表单提交）。
+PUT：用于更新资源。
+DELETE：用于删除资源。
+HEAD：用于仅获取资源的元信息（返回头，不返回实体）。
+OPTIONS：用于获取可用的 HTTP 方法。
+Tr BallRed：无操作，只是用于测试。
+
+3. HTTP 响应状态码
+HTTP 响应状态码用于表示服务器对客户端请求的处理结果。以下是常见的 HTTP 状态码：
+
+状态码	描述	示例用途
+200	成功	访问正常网页
+404	未找到	某个资源找不到
+500	内部服务器错误	系统错误、服务不可用
+201	创建成功	创建新资源
+202	部分同意	对资源的同意部分返回
+204	无响应	没有内容返回
+1xx-999	临时状态码	竞争性重传机制（HTTP 1.1）
+4. HTTP 头部
+HTTP 头部包括以下几个部分：
+
+请求头部
+包括以下字段：
+
+Request Method：请求方法（例如 GET、POST）。
+URI：请求地址。
+Host：服务器地址和端口。
+User-Agent：客户端信息（浏览器和平台）。
+Referer：用户访问的资源点击来源。
+Accept：客户端能够理解的 MIME 类型（合并请求头）。
+Accept-Language：客户端语言偏好。
+响应头部
+包括以下字段：
+
+HTTP Version：HTTP 协议版本（例如 HTTP/1.1）。
+Date：响应创建的时间戳。
+Content-Length：响应体的长度（仅在客户端可以解析时）。
+Content-Type：响应体的 MIME 类型。
+Set-Cookie：设置浏览器会话cookie。
+Transfer-Encoding：编码方式（例如 chunked）。
+Cache-Control：缓存控制策略。
+5. HTTP 体块
+HTTP 体块分为头体（Client-Header）和实体（Response Body）：
+
+头部：与客户端交换的信息（例如 Content-Length、Content-Type、Cookie 等）。
+实体：客户端或服务器交换的内容。
+实体长度：实体的总长度。
+实体的编码方式：如 application/x-www-form-urlencoded、multipart/form-data。
+实体类型：如 HTML、JSON 等。
+6. HTTP 请求示例
+GET 请求示例：
+
+HTTP/1.1 200 OK
+Date: Tue, 01 Feb 2023 12:34:56 GMT
+Content-Type: text/html
+Content-Length: 1200
+Transfer-Encoding: chunked
+
+POST 请求示例：
+
+HTTP/1.1 201 OK
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 10
+Content-Disposition: form-data; name="username"; filename="user.txt"
+Authorization: Bearer token12345
+7. HTTP 响应示例
+HTTP/1.1 200 OK 响应：
+
+HTTP/1.1 200 OK
+Date: Tue, 01 Feb 2023 12:34:56 GMT
+Content-Type: application/html
+Content-Length: 1200
+
+HTTP/1.1 404 Not Found 响应：
+
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 1
+8. HTTP 协议的特点
+可靠：采用三次握手机制确保通信双方的信息一致性。
+可靠：HTTP 协议支持重传机制（HTTP 1.1）。
+高效：不支持长连接，仅采用握手机制启动通信。
+多路复用：客户端可以同时发送多个HTTP 请求。
+HTTP 协议是Web开发的基础，广泛应用于Web服务器与客户端之间的通信。了解HTTP 协议的含义和工作原理，有助于更好地理解Web开发中的HTTP 请求、响应和数据交换机制。
+
+
+robots 协议（了解）
+robots 协议也称爬虫协议、爬虫规则等，是指网站可建立一个 robots.txt 文件来告诉搜索引擎哪些页面可以抓取，哪些页面不能抓取，而搜索引擎则通过读取 robots.txt 文件来识别页面是否允许被抓取。
+
+注意：
+
+robots 协议不是防火墙，也没有强制执行力，搜索引擎完全可以忽视 robots.txt 文件去抓取网页快照。
+
+若需单独定义搜索引擎漫游器访问子目录时的行为，可将自定义设置合并到根目录下的 robots.txt，或使用 robots 元数据（Metadata）。
+
+robots 协议是约定俗成的规范，并非技术标准，不能完全保证网站隐私。
